@@ -1,6 +1,6 @@
 
 public class Date {
-	int year;
+	int year; // year
 	int month;
 	int day;
 	public int getYear() {
