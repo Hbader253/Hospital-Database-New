@@ -1,6 +1,6 @@
 
 public class Name {
-	private String firstName = "";		//if there are multiple, separate with space. If there are none, leave unassigned or empty.
+	private String firstName = "";		//if there are multiple, separate with dash. If there are none, leave unassigned or empty.
 	private String middleName = "";
 	private String lastName = "";
 	private String maidenName = "";
