@@ -1,14 +1,14 @@
 import java.util.ArrayList;
 
 public class Patient {
-	int patientID;
-	Name patientName = new Name(); 
-	Date dob = new Date();
-	String sex = "Undefined";  
-	String insurance = "Undefined";
-	String gP = "Undefined";      		//regular doctor. Maybe make this link to an instance of a staff class?
-	ArrayList<String> allergies = new ArrayList<String>();
-	ArrayList<String> conditions = new ArrayList<String>(); 
+	private int patientID;
+	private Name patientName = new Name(); 
+	private Date dob = new Date();
+	private String sex = "Undefined";  
+	private String insurance = "Undefined";
+	private String gP = "Undefined";      		//regular doctor. Maybe make this link to an instance of a staff class?
+	private ArrayList<String> allergies = new ArrayList<String>();
+	private ArrayList<String> conditions = new ArrayList<String>(); 
 	public int getPatientID() {		//patient ID can't be changed 
 		return patientID;
 	}

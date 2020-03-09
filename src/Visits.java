@@ -1,10 +1,10 @@
 
 public class Visits {
-	Date date = new Date();
-	Date release = new Date();
-	String hospitalID = "";
-	String summary = "";	
-	String notes = "";
+	private Date date = new Date();
+	private Date release = new Date();
+	private String hospitalID = "";
+	private String summary = "";	
+	private String notes = "";
 	public Date getDate() {
 		return date;
 	}

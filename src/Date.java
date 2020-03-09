@@ -1,8 +1,8 @@
 
 public class Date {
-	int year; // year
-	int month;
-	int day;
+	private int year; // year
+	private int month;
+	private int day;
 	public int getYear() {
 		return year;
 	}

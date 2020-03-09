@@ -2,8 +2,23 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class PatientRegister {
-	Map<Integer,Patient> register = new HashMap<Integer,Patient>();	//int is patient ID number
-	String title;
+	private Map<Integer,Patient> register = new HashMap<Integer,Patient>();	//int is patient ID number
+	private String title;
+	public Map<Integer, Patient> getRegister() {
+		return register;
+	}
+
+	public void setRegister(Map<Integer, Patient> register) {
+		this.register = register;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
 	
 	public PatientRegister(String title) {	
 		this.title = title;
