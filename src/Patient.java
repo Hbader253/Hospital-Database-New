@@ -2,7 +2,8 @@ import java.util.ArrayList;
 
 public class Patient {
 	private int patientID;
-	private Name patientName = new Name(); 
+	private Name patientName = new Name();
+	private String blood = "Undefined";
 	private Date dob = new Date();
 	private String sex = "Undefined";  
 	private String insurance = "Undefined";
@@ -12,7 +13,12 @@ public class Patient {
 	public int getPatientID() {		//patient ID can't be changed 
 		return patientID;
 	}
-
+	public String getBloodType() {
+		return blood;
+	}
+	public void setBloodType(String blood) {
+		this.blood = blood;
+	}
 	public Name getPatientName() {
 		return patientName;
 	}
