@@ -1,5 +1,7 @@
 import java.util.HashMap;
+import java.util.HashSet;
 import java.util.Map;
+import java.util.Set;
 
 public class PatientRegister {
 	private Map<Integer,Patient> register = new HashMap<Integer,Patient>();	//int is patient ID number
@@ -32,10 +34,12 @@ public class PatientRegister {
 	
 	
 	//TODO put methods used to find here 
-	public void findBloodType(String type) {
+	public Set<Patient> findBloodType(String type) {
+		Set<Patient> compatibles = new HashSet<Patient>();
 		for(Patient p: register.values()) {
-			if(p.getBloodType().equals(type));
+			if(p.getBloodType().equals(type)) compatibles.add(p);
 		}
+		return compatibles;
 	}
 	
 }
