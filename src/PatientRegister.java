@@ -32,6 +32,10 @@ public class PatientRegister {
 	
 	
 	//TODO put methods used to find here 
-	
+	public void findBloodType(String type) {
+		for(Patient p: register.values()) {
+			if(p.getBloodType().equals(type));
+		}
+	}
 	
 }
