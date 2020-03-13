@@ -1,5 +1,6 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.Arrays;
 import java.util.Scanner;
 
 public class HospitalDatabaseCSVFile {
@@ -11,10 +12,10 @@ public class HospitalDatabaseCSVFile {
 		
 		try {
 			Scanner inputStream = new Scanner(file);
-			
-			while(inputStream.hasNext()) {
-				String data = inputStream.next();
-				System.out.println(data);
+			while(inputStream.hasNextLine()) {
+				String[] record = inputStream.nextLine().split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
+				
+				System.out.println(record[10]+" "+Arrays.toString(record));
 			}
 			
 			inputStream.close();
