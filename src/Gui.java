@@ -10,6 +10,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.JFormattedTextField;
+import javax.swing.JCheckBox;
 
 public class Gui {
 
@@ -22,6 +23,12 @@ public class Gui {
 	private JFormattedTextField txtPatientInfo;
 	private JTextField txtInsurance;
 	private JTextField txtAllergies;
+	private JTextField txtDOA;
+	private JTextField txtPhys;
+	private JTextField txtConditions;
+	private JCheckBox chckbxFemale;
+	private JCheckBox chckbxMale;
+	
 
 	/**
 	 * Launch the application.
@@ -83,7 +90,7 @@ public class Gui {
 		
 		txtMiddleName = new JTextField();
 		txtMiddleName.setColumns(10);
-		txtMiddleName.setBounds(293, 15, 111, 26);
+		txtMiddleName.setBounds(284, 15, 120, 26);
 		tbMain.add(txtMiddleName);
 		
 		txtLastName = new JTextField();
@@ -98,16 +105,11 @@ public class Gui {
 				String b = txtMiddleName.getText();
 				String c = txtLastName.getText();
 				
-				txtFirstName.setText("");
-				txtLastName.setText("");
-				txtMiddleName.setText("");
-				txtBloodType.setText("");
-				txtPatientID.setText("");
-				
+				clearText();
 			
 				txtPatientInfo.setText("Patient : " + a + " " +  b +  " "  + c);
 				
-				//TODO bring up patient info from patient register
+				//TODO bring up patient info from patientregister and display on the patient tab
 			}
 		});
 		btnSearch.setBounds(198, 323, 117, 29);
@@ -116,57 +118,89 @@ public class Gui {
 		JButton btnAdd = new JButton("Add");
 		btnAdd.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				txtFirstName.setText("");
-				txtLastName.setText("");
-				txtMiddleName.setText("");
-				txtBloodType.setText("");
-				txtPatientID.setText("");
 				
-				
-				txtPatientInfo.setText("added new patient");
-				
-				//TODO create a new patient 
+				clearText();
+				txtPatientInfo.setText("added patient");
+				//TODO add new patient to patientregister and display info on patient tab
 			}
 		});
 		btnAdd.setBounds(307, 323, 117, 29);
 		tbMain.add(btnAdd);
 		
 		JLabel lblBloodType = new JLabel("Blood Type: ");
-		lblBloodType.setBounds(36, 73, 78, 16);
+		lblBloodType.setBounds(36, 127, 78, 16);
 		tbMain.add(lblBloodType);
 		
 		JLabel lblPatientId = new JLabel("Patient ID: ");
-		lblPatientId.setBounds(304, 73, 78, 16);
+		lblPatientId.setBounds(416, 73, 78, 16);
 		tbMain.add(lblPatientId);
 		
 		txtBloodType = new JTextField();
-		txtBloodType.setBounds(126, 68, 130, 26);
+		txtBloodType.setBounds(110, 122, 130, 26);
 		tbMain.add(txtBloodType);
 		txtBloodType.setColumns(10);
 		
 		txtPatientID = new JTextField();
-		txtPatientID.setBounds(380, 68, 147, 26);
+		txtPatientID.setBounds(488, 68, 120, 26);
 		tbMain.add(txtPatientID);
 		txtPatientID.setColumns(10);
-		tabbedPane.setEnabledAt(0, true);
 		
 		JLabel lblInsurance = new JLabel("Insurance:");
-		lblInsurance.setBounds(36, 143, 78, 16);
+		lblInsurance.setBounds(36, 195, 78, 16);
 		tbMain.add(lblInsurance);
 		
 		txtInsurance = new JTextField();
-		txtInsurance.setBounds(126, 138, 130, 26);
+		txtInsurance.setBounds(110, 190, 130, 26);
 		tbMain.add(txtInsurance);
 		txtInsurance.setColumns(10);
 		
 		JLabel lblAllergies = new JLabel("Allergies: ");
-		lblAllergies.setBounds(304, 143, 75, 16);
+		lblAllergies.setBounds(303, 127, 75, 16);
 		tbMain.add(lblAllergies);
 		
 		txtAllergies = new JTextField();
-		txtAllergies.setBounds(380, 138, 147, 26);
+		txtAllergies.setBounds(378, 122, 137, 26);
 		tbMain.add(txtAllergies);
 		txtAllergies.setColumns(10);
+		
+		JLabel lblSex = new JLabel("Sex: ");
+		lblSex.setBounds(6, 73, 61, 16);
+		tbMain.add(lblSex);
+		
+		JLabel lblDoa = new JLabel("DOA: ");
+		lblDoa.setBounds(197, 73, 43, 16);
+		tbMain.add(lblDoa);
+		
+		JLabel lblPhys = new JLabel("Physician: ");
+		lblPhys.setBounds(303, 195, 67, 16);
+		tbMain.add(lblPhys);
+		
+		JLabel lblConditions = new JLabel("Conditions: ");
+		lblConditions.setBounds(36, 250, 78, 16);
+		tbMain.add(lblConditions);
+		
+		chckbxMale = new JCheckBox("Male");
+		chckbxMale.setBounds(30, 69, 67, 23);
+		tbMain.add(chckbxMale);
+		
+		chckbxFemale = new JCheckBox("Female");
+		chckbxFemale.setBounds(90, 69, 76, 23);
+		tbMain.add(chckbxFemale);
+		
+		txtDOA = new JTextField();
+		txtDOA.setBounds(284, 68, 120, 26);
+		tbMain.add(txtDOA);
+		txtDOA.setColumns(10);
+		
+		txtPhys = new JTextField();
+		txtPhys.setBounds(378, 190, 137, 26);
+		tbMain.add(txtPhys);
+		txtPhys.setColumns(10);
+		
+		txtConditions = new JTextField();
+		txtConditions.setBounds(110, 245, 405, 26);
+		tbMain.add(txtConditions);
+		txtConditions.setColumns(10);
 		tabbedPane.setEnabledAt(0, true);
 		
 		JPanel tbPatient = new JPanel();
@@ -179,5 +213,21 @@ public class Gui {
 		txtPatientInfo.setBounds(6, 16, 586, 338);
 		tbPatient.add(txtPatientInfo);
 		tabbedPane.setEnabledAt(1, true);
+	}
+	
+	private void clearText() {
+		txtFirstName.setText("");
+		txtMiddleName.setText("");
+		txtLastName.setText("");
+		txtBloodType.setText("");
+		txtPatientID.setText("");
+		txtInsurance.setText("");
+		txtAllergies.setText("");
+		txtInsurance.setText("");
+		txtConditions.setText("");
+		txtPhys.setText("");
+		txtDOA.setText("");
+		chckbxMale.setSelected(false);
+		chckbxFemale.setSelected(false);
 	}
 }
