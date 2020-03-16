@@ -15,7 +15,7 @@ public class HospitalDatabaseCSVFile {
 			while(inputStream.hasNextLine()) {
 				String[] record = inputStream.nextLine().split(",(?=(?:[^\"]*\"[^\"]*\")*[^\"]*$)");
 				
-				System.out.println(record[10]+" "+Arrays.toString(record));
+				System.out.println(Arrays.toString(record));
 			}
 			
 			inputStream.close();
