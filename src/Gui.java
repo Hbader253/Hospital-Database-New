@@ -8,7 +8,11 @@ import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.util.Map;
+import java.util.Scanner;
 import java.awt.event.ActionEvent;
 import javax.swing.JCheckBox;
 
@@ -113,39 +117,40 @@ public class Gui {
 		JButton btnSearch = new JButton("Search");
 		btnSearch.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				
-				String name = txtFirstName.getText();
-				
 
-				//	Map<Integer, Patient> register = x.getRegister();
+				String fileName = "HDCSV.csv";
+				File file = new File(fileName);
+				String [] patientData;
 
-				if(name.equals("Jeremy")) {
-					txtFname.setText(txtFirstName.getText());
-					txtLname.setText(txtLastName.getText());
-					txtMname.setText(txtMiddleName.getText());
-					txtS.setText("Male");
-					txtNumber.setText("647");
-					txtdoa.setText("10/5/1980");
-					txtBlood.setText("O-positive");
-					txtI.setText("Aflac");
-					txtP.setText("Dr. Tucker Nipper");
-					txtc.setText("Salmonella");
-					
-				} else if (name.equals("Ashley")) {
-					txtFname.setText(txtFirstName.getText());
-					txtLname.setText(txtLastName.getText());
-					txtMname.setText(txtMiddleName.getText());
-					txtS.setText("Female");
-					txtNumber.setText("878");
-					txtdoa.setText("1/23/2000");
-					txtBlood.setText("A-positive");
-					txtI.setText("MetLife");
-					txtP.setText("Dr. Jasmin Krauser");
-					txtc.setText("Diabetes");
-					txtA.setText("Garlic");
+				try {
+					Scanner filescanner = new Scanner(new FileReader(fileName));
+					filescanner.nextLine();
+					String row;
+					while(filescanner.hasNext()) {	
+						row = filescanner.nextLine();
+						patientData = row.split(",");
+						System.out.println(patientData[5]);
+						System.out.println("number " + txtPatientID.getText());
+
+						if(txtPatientID.getText() == patientData[5]) {
+
+
+							System.out.println("got here");
+							txtFname.setText(patientData[0]);
+						}
+
+
+					}
+
+					filescanner.close();
+
+				} catch (FileNotFoundException e1) {
+					e1.printStackTrace();
 				}
 
-				
+
+
+
 
 				clearText();
 				//TODO bring up patient info from patientregister and display on the patient tab
@@ -159,6 +164,7 @@ public class Gui {
 			public void actionPerformed(ActionEvent e) {
 
 				txtc.setText("                                   New Patient Added");
+
 				clearText();
 				//TODO add new patient to patientregister and display info on patient tab
 			}
@@ -249,37 +255,37 @@ public class Gui {
 
 		txtFname = new JTextField();
 		txtFname.setEditable(false);
-		txtFname.setBounds(31, 26, 130, 26);
+		txtFname.setBounds(72, 26, 120, 26);
 		tbPatient.add(txtFname);
 		txtFname.setColumns(10);
 
 		txtLname = new JTextField();
 		txtLname.setEditable(false);
-		txtLname.setBounds(433, 26, 130, 26);
+		txtLname.setBounds(478, 26, 130, 26);
 		tbPatient.add(txtLname);
 		txtLname.setColumns(10);
 
 		txtMname = new JTextField();
 		txtMname.setEditable(false);
-		txtMname.setBounds(230, 26, 130, 26);
+		txtMname.setBounds(286, 26, 120, 26);
 		tbPatient.add(txtMname);
 		txtMname.setColumns(10);
 
 		txtS = new JTextField();
 		txtS.setEditable(false);
-		txtS.setBounds(31, 86, 130, 26);
+		txtS.setBounds(72, 86, 120, 26);
 		tbPatient.add(txtS);
 		txtS.setColumns(10);
 
 		txtdoa = new JTextField();
 		txtdoa.setEditable(false);
-		txtdoa.setBounds(230, 86, 130, 26);
+		txtdoa.setBounds(286, 86, 120, 26);
 		tbPatient.add(txtdoa);
 		txtdoa.setColumns(10);
 
 		txtNumber = new JTextField();
 		txtNumber.setEditable(false);
-		txtNumber.setBounds(433, 86, 130, 26);
+		txtNumber.setBounds(478, 86, 130, 26);
 		tbPatient.add(txtNumber);
 		txtNumber.setColumns(10);
 
@@ -312,6 +318,50 @@ public class Gui {
 		txtc.setBounds(88, 283, 397, 26);
 		tbPatient.add(txtc);
 		txtc.setColumns(10);
+
+		JLabel lblfname = new JLabel("First Name: ");
+		lblfname.setBounds(0, 31, 83, 16);
+		tbPatient.add(lblfname);
+
+		JLabel lblmname = new JLabel("Middle Name:");
+		lblmname.setBounds(199, 31, 94, 16);
+		tbPatient.add(lblmname);
+
+		JLabel lbllname = new JLabel("Last Name: ");
+		lbllname.setBounds(406, 31, 80, 16);
+		tbPatient.add(lbllname);
+
+		JLabel lblPid = new JLabel("Patient ID: ");
+		lblPid.setBounds(416, 91, 69, 16);
+		tbPatient.add(lblPid);
+
+		JLabel lbls = new JLabel("Sex:");
+		lbls.setBounds(6, 91, 61, 16);
+		tbPatient.add(lbls);
+
+		JLabel lbldoa = new JLabel("DOA:");
+		lbldoa.setBounds(243, 91, 61, 16);
+		tbPatient.add(lbldoa);
+
+		JLabel lblConditions_1 = new JLabel("Conditions:");
+		lblConditions_1.setBounds(6, 288, 77, 16);
+		tbPatient.add(lblConditions_1);
+
+		JLabel lblBlood = new JLabel("Blood Type: ");
+		lblBlood.setBounds(0, 163, 83, 16);
+		tbPatient.add(lblBlood);
+
+		JLabel lblAllergies_1 = new JLabel("Allergies:");
+		lblAllergies_1.setBounds(286, 163, 61, 16);
+		tbPatient.add(lblAllergies_1);
+
+		JLabel lblPhysician = new JLabel("Physician:");
+		lblPhysician.setBounds(282, 223, 80, 16);
+		tbPatient.add(lblPhysician);
+
+		JLabel lblInsurance_1 = new JLabel("Insurance:");
+		lblInsurance_1.setBounds(7, 223, 76, 16);
+		tbPatient.add(lblInsurance_1);
 	}
 
 	private void clearText() {
